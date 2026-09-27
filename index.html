@@ -9,11 +9,15 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2317131d'/%3E%3Cpath d='M14 45 25 17h9l5 13 5-13h7L39 47h-8l-5-14-5 14z' fill='%23ff573c'/%3E%3C/svg%3E">
   <style>
     :root {
-      --ink: #17131d;
-      --text: #f7f6f2;
-      --muted: #b9b2c4;
-      --accent: #ff573c;
-      --line: rgba(255, 255, 255, 0.16);
+      --ink: #161916;
+      --paper: #f7f8f5;
+      --text: #161916;
+      --muted: #646b64;
+      --accent: #d5fa42;
+      --line: #d9ddd5;
+      --header: 82px;
+      --footer: 64px;
+      --rail: 76px;
     }
 
     * { box-sizing: border-box; }
@@ -24,14 +28,14 @@
       height: 100%;
       margin: 0;
       overflow: hidden;
-      background: var(--ink);
+      background: var(--paper);
       color: var(--text);
       font-family: Pretendard, "Noto Sans KR", "Apple SD Gothic Neo", sans-serif;
     }
 
     .page {
       display: grid;
-      grid-template-rows: auto 1fr;
+      grid-template-rows: var(--header) 1fr var(--footer);
       height: 100%;
     }
 
@@ -40,27 +44,20 @@
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      min-height: 70px;
-      padding: 12px 22px;
+      min-height: var(--header);
+      padding: 0 30px;
+      background: var(--paper);
       border-bottom: 1px solid var(--line);
     }
 
     .title-wrap {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 22px;
       min-width: 0;
     }
 
-    .week {
-      flex: 0 0 auto;
-      padding: 8px 11px;
-      color: var(--ink);
-      background: var(--accent);
-      border-radius: 9px;
-      font-size: 13px;
-      font-weight: 900;
-    }
+    .brand{display:flex;align-items:center;gap:12px;color:var(--ink);text-decoration:none;font-size:18px;font-weight:650}.brand-mark{height:39px;width:39px;background:var(--ink);color:var(--accent);font-size:27px;font-weight:800;line-height:.76;padding:4px 7px}.brand small{display:block;font-size:10px;margin-top:5px;font-weight:500;color:var(--muted)}.week-links{display:flex;gap:6px;align-items:center}.week-links a{display:grid;place-items:center;min-width:34px;height:30px;padding:0 8px;border:1px solid var(--line);color:var(--ink);font-size:11px;font-weight:800;text-decoration:none}.week-links a:hover,.week-links a:focus-visible{background:var(--ink);border-color:var(--ink);color:var(--accent)}.week-links a[aria-current=page]{background:var(--accent);border-color:var(--ink)}
 
     h1 {
       margin: 0;
@@ -102,6 +99,7 @@
       border: 0;
       background: #f3f1ee;
     }
+    .viewer-wrap{position:relative;margin-left:var(--rail);min-height:0}.week-rail{position:absolute;top:var(--header);bottom:var(--footer);left:0;width:var(--rail);border-right:1px solid var(--line);display:flex;align-items:center;flex-direction:column;padding:20px 0;background:var(--paper)}.week-rail b{display:grid;place-items:center;width:44px;height:40px;background:var(--ink);color:var(--accent);font-size:13px}.rail-label{margin-top:auto;writing-mode:vertical-rl;font-size:10px;color:var(--muted)}.deck-footer{display:flex;align-items:center;justify-content:space-between;padding:0 28px 0 calc(var(--rail) + 28px);border-top:1px solid var(--line);background:var(--paper);font-size:10px;line-height:1.45;color:var(--muted)}
 
     .fallback {
       display: grid;
@@ -119,31 +117,30 @@
     }
 
     @media (max-width: 640px) {
-      header { padding: 10px 12px; }
+      header { padding: 0 14px; }
       h1 { font-size: 15px; }
       .button:not(.primary) { display: none; }
       .button { min-height: 40px; padding: 0 12px; }
+      .title-wrap{gap:9px}.brand{gap:8px}.brand small{display:none}.week-links{gap:3px}.week-links a{min-width:27px;height:27px;padding:0 5px;font-size:10px}.week-rail{width:54px}.viewer-wrap{margin-left:54px}.deck-footer{padding-left:66px}.deck-footer span:last-child{display:none}
     }
   </style>
 </head>
 <body>
   <main class="page">
     <header>
-      <div class="title-wrap">
-        <span class="week">WEEK 01</span>
-        <h1>AWAC 1기 1주차 강의덱</h1>
-      </div>
+      <div class="title-wrap"><a class="brand" href="https://leeyoojinwork-pm.github.io/awac-cohort1-platform/" aria-label="AWAC 1기 강의 플랫폼"><span class="brand-mark" aria-hidden="true">AW<br>AC</span><span><b>AWAC</b><small>AFTER WORK AI CLUB</small></span></a><nav class="week-links" aria-label="주차별 강의 바로가기"><a href="https://leeyoojinwork-pm.github.io/awac-week1-agent/" aria-current="page">1W</a><a href="https://leeyoojinwork-pm.github.io/awac-week2-agent/">2W</a><a href="https://leeyoojinwork-pm.github.io/awac-week3-agent/">3W</a><a href="https://leeyoojinwork-pm.github.io/awac-week4-agent/">4W</a></nav></div>
       <nav class="actions" aria-label="강의덱 작업">
         <a class="button" href="https://leeyoojinwork-pm.github.io/awac-cohort1-platform/">전체 주차</a>
         <a class="button primary" href="AWAC-week1-deck.pdf" target="_blank" rel="noopener">PDF 새 창</a>
       </nav>
     </header>
 
-    <object class="viewer" data="AWAC-week1-deck.pdf#view=FitH" type="application/pdf">
+    <aside class="week-rail" aria-label="현재 주차"><b>01</b><span class="rail-label">AWAC / 01</span></aside><div class="viewer-wrap"><object class="viewer" data="AWAC-week1-deck.pdf#view=FitH" type="application/pdf">
       <div class="fallback">
         <p>이 브라우저에서는 PDF를 화면 안에 표시할 수 없습니다. 위의 PDF 새 창 버튼으로 강의덱을 열어주세요.</p>
       </div>
-    </object>
+    </object></div>
+    <footer class="deck-footer"><span>AWAC 1기 강의 플랫폼</span><span>© 2026 육민호, 이유진. All rights reserved.</span></footer>
   </main>
 </body>
 </html>
